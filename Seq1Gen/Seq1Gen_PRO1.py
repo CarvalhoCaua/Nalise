@@ -1,3 +1,5 @@
+import pandas as pd
+
 #Análise simples de uma sequência básica de DNA
 
 gene = "GATGGAACTTGACTACGTAAATT"
@@ -33,3 +35,15 @@ for i in gene:
     elif i == "G":
         rnaseq += "C"
 print(f"Sequência Transcrita (RNA): {rnaseq}")
+data = {
+    'A': ["DNA", "Tamanho", " Três Bases Iniciais",
+          "Últimas Três Bases", "A", "T", "G", "C",
+          "Sequência Complementar", "GCs", "RNA"],
+    'B': [gene, len(gene), gene[:3], gene[-3:],
+          gene.count("A"), gene.count("T"), gene.count("G"), gene.count("C"),
+          genec, gene.count('G'), rnaseq]
+}
+
+dataframe = pd.DataFrame(data)
+print(dataframe)
+dataframe.to_csv('dataframe.csv')
